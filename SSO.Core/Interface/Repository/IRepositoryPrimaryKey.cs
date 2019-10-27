@@ -2,9 +2,10 @@
 
 namespace SSO.Core.Interface.Repository
 {
-    public interface IRepositoryPrimaryKey<TID, TPKEntity>: IRepository<TPKEntity>
+    public interface IRepositoryPrimaryKey<TID, TPKEntity>: IRepositoryRead<TPKEntity>, IRepositoryModify<TPKEntity>
         where TID: struct
         where TPKEntity : class, IModelPrimaryKey<TID> , new()
     {
+
     }
 }
