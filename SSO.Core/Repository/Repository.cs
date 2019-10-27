@@ -17,7 +17,7 @@ namespace SSO.Core.Repository
 
         public RepositoryBase(SSOIdentityServerContext ctx)
         {
-            this._ctx = ctx;
+            this.SSOContext = ctx;
         }
 
         #endregion
@@ -25,32 +25,32 @@ namespace SSO.Core.Repository
         #region Implemented Members
         public virtual async Task Delete(TEntity entity)
         {
-            using (var tx = _ctx.Database.BeginTransaction())
+            using (var tx = SSOContext.Database.BeginTransaction())
             {
-                this._ctx.Remove(entity);
-                await this._ctx.SaveChangesAsync();
+                this.SSOContext.Remove(entity);
+                await this.SSOContext.SaveChangesAsync();
                 await tx.CommitAsync();
             }
         }
 
         public virtual async Task<TEntity> Get(Expression<Func<TEntity, bool>> expression)
         {
-            return await this._ctx.Set<TEntity>().FirstOrDefaultAsync(expression);
+            return await this.SSOContext.Set<TEntity>().FirstOrDefaultAsync(expression);
         }
 
         public virtual async Task<IEnumerable<TEntity>> GetList()
         {
-            return await this._ctx.Set<TEntity>().ToListAsync();
+            return await this.SSOContext.Set<TEntity>().ToListAsync();
         }
 
         public virtual async Task<IEnumerable<TEntity>> GetList(Expression<Func<TEntity, bool>> expression)
         {
-            return await this._ctx.Set<TEntity>().Where(expression).ToListAsync();
+            return await this.SSOContext.Set<TEntity>().Where(expression).ToListAsync();
         }
 
         public virtual async Task<IEnumerable<TEntity>> GetList(Expression<Func<TEntity, bool>> expression, Expression<Func<TEntity, object>>[] includes)
         {
-            var _query = this._ctx.Set<TEntity>().Where(expression).AsQueryable();
+            var _query = this.SSOContext.Set<TEntity>().Where(expression).AsQueryable();
 
             foreach (var item in includes)
                 _query.Include(item);
@@ -60,10 +60,10 @@ namespace SSO.Core.Repository
 
         public virtual async Task<TEntity> Create(TEntity entity)
         {
-            using (var tx = _ctx.Database.BeginTransaction())
+            using (var tx = SSOContext.Database.BeginTransaction())
             {
-                this._ctx.Add(entity);
-                await this._ctx.SaveChangesAsync();
+                this.SSOContext.Add(entity);
+                await this.SSOContext.SaveChangesAsync();
                 await tx.CommitAsync();
             }
 
@@ -74,13 +74,7 @@ namespace SSO.Core.Repository
 
         #region Protected Properties
 
-        protected SSOIdentityServerContext DbContext { get => this._ctx; }
-
-        #endregion
-
-        #region Private Fields
-
-        private readonly SSOIdentityServerContext _ctx;
+        protected SSOIdentityServerContext SSOContext { get; private set; }
 
         #endregion
     }

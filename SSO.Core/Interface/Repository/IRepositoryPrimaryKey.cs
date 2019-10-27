@@ -6,6 +6,5 @@ namespace SSO.Core.Interface.Repository
         where TID: struct
         where TPKEntity : class, IModelPrimaryKey<TID> , new()
     {
-
     }
 }
