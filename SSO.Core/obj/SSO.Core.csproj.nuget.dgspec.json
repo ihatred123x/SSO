@@ -47,6 +47,10 @@
               "target": "Package",
               "version": "[3.0.2, )"
             },
+            "IdentityServer4.EntityFramework": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.0.0, )"

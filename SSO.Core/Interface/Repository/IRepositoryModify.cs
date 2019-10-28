@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SSO.Core.Interface.Repository
 {
     public interface IRepositoryModify<TEntity>
-        where TEntity : class, IModel, new()
+        where TEntity : class, IModel
     {
         Task<TEntity> Create(TEntity entity);
         Task Delete(TEntity entity);

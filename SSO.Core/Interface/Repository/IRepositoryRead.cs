@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SSO.Core.Interface.Repository
 {
-    public interface IRepositoryRead<TEntity>
-        where TEntity : class, IModel, new()
+    public interface IRepositoryRead<TIEntity>
+        where TIEntity : class, IModel
     {
-        Task<TEntity> Get(Expression<Func<TEntity, bool>> expression);
-        Task<IEnumerable<TEntity>> GetList();
-        Task<IEnumerable<TEntity>> GetList(Expression<Func<TEntity, bool>> expression);
-        Task<IEnumerable<TEntity>> GetList(Expression<Func<TEntity, bool>> expression, Expression<Func<TEntity, object>>[] includes);
+        Task<TIEntity> Get(Expression<Func<TIEntity, bool>> expression);
+        Task<IEnumerable<TIEntity>> GetList();
+        Task<IEnumerable<TIEntity>> GetList(Expression<Func<TIEntity, bool>> expression);
+        Task<IEnumerable<TIEntity>> GetList(Expression<Func<TIEntity, bool>> expression, Expression<Func<TIEntity, object>>[] includes);
     }
 }

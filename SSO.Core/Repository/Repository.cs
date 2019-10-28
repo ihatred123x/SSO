@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SSO.Core.Contexts;
 using SSO.Core.Contexts.Models;
+using SSO.Core.Interface.Contexts.Models;
 using SSO.Core.Interface.Repository;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,9 @@ using System.Threading.Tasks;
 
 namespace SSO.Core.Repository
 {
-    public abstract class RepositoryBase<TEntity> : IRepositoryRead<TEntity>, IRepositoryModify<TEntity>
-        where TEntity: ModelBase, new()
+    public abstract class RepositoryBase<TIEntity, TEntity> : IRepositoryRead<TIEntity>, IRepositoryModify<TIEntity>
+        where TIEntity: class, IModel
+        where TEntity: ModelBase, TIEntity, new()
     {
         #region Constructor
 
@@ -23,7 +25,7 @@ namespace SSO.Core.Repository
         #endregion
 
         #region Implemented Members
-        public virtual async Task Delete(TEntity entity)
+        public virtual async Task Delete(TIEntity entity)
         {
             using (var tx = SSOContext.Database.BeginTransaction())
             {
@@ -33,24 +35,24 @@ namespace SSO.Core.Repository
             }
         }
 
-        public virtual async Task<TEntity> Get(Expression<Func<TEntity, bool>> expression)
+        public virtual async Task<TIEntity> Get(Expression<Func<TIEntity, bool>> expression)
         {
-            return await this.SSOContext.Set<TEntity>().FirstOrDefaultAsync(expression);
+            return await this.SSOContext.Set<TIEntity>().FirstOrDefaultAsync(expression);
         }
 
-        public virtual async Task<IEnumerable<TEntity>> GetList()
+        public virtual async Task<IEnumerable<TIEntity>> GetList()
         {
-            return await this.SSOContext.Set<TEntity>().ToListAsync();
+            return await this.SSOContext.Set<TIEntity>().ToListAsync();
         }
 
-        public virtual async Task<IEnumerable<TEntity>> GetList(Expression<Func<TEntity, bool>> expression)
+        public virtual async Task<IEnumerable<TIEntity>> GetList(Expression<Func<TIEntity, bool>> expression)
         {
-            return await this.SSOContext.Set<TEntity>().Where(expression).ToListAsync();
+            return await this.SSOContext.Set<TIEntity>().Where(expression).ToListAsync();
         }
 
-        public virtual async Task<IEnumerable<TEntity>> GetList(Expression<Func<TEntity, bool>> expression, Expression<Func<TEntity, object>>[] includes)
+        public virtual async Task<IEnumerable<TIEntity>> GetList(Expression<Func<TIEntity, bool>> expression, Expression<Func<TIEntity, object>>[] includes)
         {
-            var _query = this.SSOContext.Set<TEntity>().Where(expression).AsQueryable();
+            var _query = this.SSOContext.Set<TIEntity>().Where(expression).AsQueryable();
 
             foreach (var item in includes)
                 _query.Include(item);
@@ -58,7 +60,7 @@ namespace SSO.Core.Repository
             return await _query.ToListAsync();
         }
 
-        public virtual async Task<TEntity> Create(TEntity entity)
+        public virtual async Task<TIEntity> Create(TIEntity entity)
         {
             using (var tx = SSOContext.Database.BeginTransaction())
             {

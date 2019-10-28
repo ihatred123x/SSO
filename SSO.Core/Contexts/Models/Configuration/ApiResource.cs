@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SSO.Core.Interface.Contexts.Models.Configuration;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SSO.Core.Contexts.Models.Configuration
 {
     [Table("ApiResource")]
-    public class ApiResource: ModelBasePrimaryKey<int>
+    public class ApiResource: ModelBasePrimaryKey<int>, IApiResource
     {
         [Required]
         [DefaultValue(true)]
