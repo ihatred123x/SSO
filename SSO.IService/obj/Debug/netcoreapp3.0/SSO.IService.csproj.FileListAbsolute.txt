@@ -1,0 +1,8 @@
+D:\Coding\SSO\SSO.IService\bin\Debug\netcoreapp3.0\SSO.IService.deps.json
+D:\Coding\SSO\SSO.IService\bin\Debug\netcoreapp3.0\SSO.IService.dll
+D:\Coding\SSO\SSO.IService\obj\Debug\netcoreapp3.0\SSO.IService.csprojAssemblyReference.cache
+D:\Coding\SSO\SSO.IService\obj\Debug\netcoreapp3.0\SSO.IService.AssemblyInfoInputs.cache
+D:\Coding\SSO\SSO.IService\obj\Debug\netcoreapp3.0\SSO.IService.AssemblyInfo.cs
+D:\Coding\SSO\SSO.IService\bin\Debug\netcoreapp3.0\SSO.IService.pdb
+D:\Coding\SSO\SSO.IService\obj\Debug\netcoreapp3.0\SSO.IService.dll
+D:\Coding\SSO\SSO.IService\obj\Debug\netcoreapp3.0\SSO.IService.pdb

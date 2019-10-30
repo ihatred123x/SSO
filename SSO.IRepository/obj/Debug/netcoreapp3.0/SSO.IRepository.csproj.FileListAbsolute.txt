@@ -1,0 +1,8 @@
+D:\Coding\SSO\SSO.IRepository\bin\Debug\netcoreapp3.0\SSO.IRepository.deps.json
+D:\Coding\SSO\SSO.IRepository\bin\Debug\netcoreapp3.0\SSO.IRepository.dll
+D:\Coding\SSO\SSO.IRepository\bin\Debug\netcoreapp3.0\SSO.IRepository.pdb
+D:\Coding\SSO\SSO.IRepository\obj\Debug\netcoreapp3.0\SSO.IRepository.csprojAssemblyReference.cache
+D:\Coding\SSO\SSO.IRepository\obj\Debug\netcoreapp3.0\SSO.IRepository.AssemblyInfoInputs.cache
+D:\Coding\SSO\SSO.IRepository\obj\Debug\netcoreapp3.0\SSO.IRepository.AssemblyInfo.cs
+D:\Coding\SSO\SSO.IRepository\obj\Debug\netcoreapp3.0\SSO.IRepository.dll
+D:\Coding\SSO\SSO.IRepository\obj\Debug\netcoreapp3.0\SSO.IRepository.pdb

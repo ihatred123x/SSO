@@ -1,0 +1,5 @@
+D:\Coding\SSO\SSO.Database\bin\Debug\netcoreapp3.0\SSO.Database.deps.json
+D:\Coding\SSO\SSO.Database\bin\Debug\netcoreapp3.0\SSO.Database.dll
+D:\Coding\SSO\SSO.Database\obj\Debug\netcoreapp3.0\SSO.Database.csprojAssemblyReference.cache
+D:\Coding\SSO\SSO.Database\obj\Debug\netcoreapp3.0\SSO.Database.AssemblyInfoInputs.cache
+D:\Coding\SSO\SSO.Database\obj\Debug\netcoreapp3.0\SSO.Database.AssemblyInfo.cs
