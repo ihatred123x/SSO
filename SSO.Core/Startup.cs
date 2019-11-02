@@ -1,3 +1,4 @@
+using AutoMapper;
 using IdentityServer4.EntityFramework.Entities;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
@@ -8,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SSO.IService.IdentityServer;
 using SSO.Service.Main;
+using SSO.Service.Mapping;
+using System;
 using System.Collections.Generic;
 using static IdentityModel.OidcConstants;
 
@@ -26,7 +29,22 @@ namespace SSO.Core
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddService(this.Configuration);
+            //services.AddAuthorization();
             services.AddControllers();
+            services.AddSingleton<IMapper>(new Mapper(new MapperConfiguration(cfg =>
+            
+                cfg.AddProfiles(new List<Profile>
+                {
+                    new ServiceMapping()
+                })
+            
+           )));
+            //services.AddAutoMapper(o => o.AddProfiles(
+            //    new List<Profile>
+            //    {
+            //        new ServiceMapping()
+            //    }),
+            //    AppDomain.CurrentDomain.GetAssemblies());
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
                 .AddResource();
@@ -65,7 +83,7 @@ namespace SSO.Core
 
             app.UseRouting();
 
-            app.UseAuthorization();
+             app.UseAuthorization();
 
             app.UseIdentityServer();
 

@@ -1,5 +1,5 @@
-﻿using SSO.IRepository.Collections.Models.Configuration;
-using SSO.IRepository.Collections.Resource;
+﻿using SSO.IRepository.Collections.Resource;
+using SSO.IRepository.Models.Configuration;
 using SSO.Repository.Contexts;
 using SSO.Repository.Contexts.Models.Configuration;
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SSO.IRepository.Models.Configuration;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -6,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SSO.Repository.Contexts.Models.Configuration
 {
     [Table("ApiScope")]
-    public class ApiScope : ApiResourceBase
+    public class ApiScope : ApiResourceBase, IApiScope
     {
         [MaxLength(200)]
         [Required]
@@ -26,6 +27,6 @@ namespace SSO.Repository.Contexts.Models.Configuration
         [Required]
         [DefaultValue(false)]
         public bool ShowInDiscoveryDocument { get; set; }
-        public virtual ICollection<ApiScopeClaim> ApiScopeClaims { get; set; }
+        public virtual ICollection<IApiScopeClaim> ApiScopeClaims { get; set; }
     }
 }

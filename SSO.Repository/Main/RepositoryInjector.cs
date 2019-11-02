@@ -14,6 +14,7 @@ namespace SSO.Repository.Main
                 opts => opts.UseSqlServer(configuration["ConnectionString:SSODB"], o => o.MigrationsAssembly("SSO.Repository")));
 
             serviceCollection.AddScoped<IApiResourceRepository, ApiResourceRepository>();
+            serviceCollection.AddScoped<IIdentityResourceRepository, IdentityResourceRepository>();
         }
     }
 }

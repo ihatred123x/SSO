@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SSO.IRepository.Models.Configuration;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SSO.Repository.Contexts.Models.Configuration
 {
     [Table("IdentityResource")]
-    public class IdentityResource : ModelBasePrimaryKey<int>
+    public class IdentityResource : ModelBasePrimaryKey<int>, IIdentityResource
     {
         [Required]
         [DefaultValue(true)]
@@ -33,7 +34,6 @@ namespace SSO.Repository.Contexts.Models.Configuration
         public Nullable<DateTime> Updated { get; set; }
         [DefaultValue(false)]
         public bool NonEditable { get; set; }
-
-        public ICollection<IdentityClaim> IdentityClaims { get; set; }
+        public ICollection<IIdentityClaim> IdentityClaims { get; set; }
     }
 }

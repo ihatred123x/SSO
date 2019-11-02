@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using SSO.IRepository.Models.Configuration;
 using SSO.Repository.Contexts.Models.Configuration;
 using SSO.Repository.Contexts.Models.Persistent;
 using System;

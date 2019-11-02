@@ -1,4 +1,4 @@
-﻿using SSO.IRepository.Collections.Models.Configuration;
+﻿using SSO.IRepository.Models.Configuration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,9 +26,9 @@ namespace SSO.Repository.Contexts.Models.Configuration
         public Nullable<DateTime> LastAccessed { get; set; }
         [Required]
         public bool NonEditable { get; set; }
-        public virtual ICollection<ApiClaim> ApiClaims { get; set; }
-        public virtual ICollection<ApiProperty> ApiProperties { get; set; }
-        public virtual ICollection<ApiScope> ApiScopes { get; set; }
-        public virtual ICollection<ApiSecret> ApiSecrets { get; set; }
+        public virtual ICollection<IApiClaim> ApiClaims { get; set; }
+        public virtual ICollection<IApiProperty> ApiProperties { get; set; }
+        public virtual ICollection<IApiScope> ApiScopes { get; set; }
+        public virtual ICollection<IApiSecret> ApiSecrets { get; set; }
     }
 }

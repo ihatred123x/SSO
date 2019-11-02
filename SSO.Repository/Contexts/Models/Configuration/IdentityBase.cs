@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SSO.IRepository.Models.Configuration;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SSO.Repository.Contexts.Models.Configuration
 {
-    public abstract class IdentityBase : ModelBasePrimaryKey<int>
+    public abstract class IdentityBase : ModelBasePrimaryKey<int>, IIdentity
     {
         [Required]
         [ForeignKey("IdentityResource")]
         public int IdentityResourceId { get; set; }
-        public virtual IdentityResource IdentityResource { get; set; }
+        public virtual IIdentityResource IdentityResource { get; set; }
     }
 }

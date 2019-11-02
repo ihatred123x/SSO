@@ -1,5 +1,4 @@
-﻿
-using SSO.IRepository.Collections.Models.Configuration;
+﻿using SSO.IRepository.Models.Configuration;
 
 namespace SSO.IRepository.Collections.Resource
 {

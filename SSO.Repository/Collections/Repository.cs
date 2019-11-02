@@ -40,24 +40,24 @@ namespace SSO.Repository.Collections
             return await this.SSOContext.Set<TIEntity>().FirstOrDefaultAsync(expression);
         }
 
-        public virtual async Task<IEnumerable<TIEntity>> GetList()
+        public virtual IQueryable<TIEntity> GetList()
         {
-            return await this.SSOContext.Set<TIEntity>().ToListAsync();
+            return this.SSOContext.Set<TIEntity>().AsQueryable();
         }
 
-        public virtual async Task<IEnumerable<TIEntity>> GetList(Expression<Func<TIEntity, bool>> expression)
+        public virtual IQueryable<TIEntity> GetList(Expression<Func<TIEntity, bool>> expression)
         {
-            return await this.SSOContext.Set<TIEntity>().Where(expression).ToListAsync();
+            return this.SSOContext.Set<TIEntity>().Where(expression).AsQueryable();
         }
 
-        public virtual async Task<IEnumerable<TIEntity>> GetList(Expression<Func<TIEntity, bool>> expression, Expression<Func<TIEntity, object>>[] includes)
+        public virtual IQueryable<TIEntity> GetList(Expression<Func<TIEntity, bool>> expression, Expression<Func<TIEntity, object>>[] includes)
         {
             var _query = this.SSOContext.Set<TIEntity>().Where(expression).AsQueryable();
 
             foreach (var item in includes)
                 _query.Include(item);
 
-            return await _query.ToListAsync();
+            return _query;
         }
 
         public virtual async Task<TIEntity> Create(TIEntity entity)
